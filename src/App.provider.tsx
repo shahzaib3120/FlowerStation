@@ -1,49 +1,45 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { Category, Product, CategoriesList, ProductsList } from './DummyData';
+import React, { createContext, useState } from 'react';
+import { ToastAndroid } from 'react-native';
+import { Product } from './DummyData';
 
 type AppContextType = {
-    products: Product[];
-    categories: Category[];
-    cart: Product[];
-    addToCart: (product: Product) => void;
+  cart: Product[];
+  addToCart: (product: Product) => void;
 };
 
 const defaultvalue = {
-    products: ProductsList,
-    categories: CategoriesList,
-    cart: [],
-    addToCart: () => {},
+  cart: [],
+  addToCart: () => {},
 };
 
 const AppContext = createContext<AppContextType>(defaultvalue);
-
-export const AppProvider = ({ children, navigation }) => {
-    const [cart, setCart] = useState<Product[]>([]);
-    const [products, setProducts] = useState<Product[]>([]);
-    const [categories, setCategories] = useState<Category[]>([]);
-    useEffect(() => {
-        console.log('yo yo ');
-        setProducts(ProductsList);
-        setCategories(CategoriesList);
-    }, []);
-
-    const addToCart = React.useCallback((product: Product) => {
+type Props = {
+  children: React.ReactNode;
+  navigation: any;
+};
+export const AppProvider: React.FC<Props> = ({ children }) => {
+  const [cart, setCart] = useState<Product[]>([]);
+  const addToCart = React.useCallback(
+    (product: Product) => {
+      if (!cart.find(p => p.id === product.id)) {
         setCart([...cart, product]);
-        navigation.navigate('Cart');
-        console.log('working');
-    }, []);
+        ToastAndroid.show('Item Added to Cart', ToastAndroid.SHORT);
+      } else {
+        ToastAndroid.show('Already in cart', ToastAndroid.SHORT);
+      }
+    },
+    [cart],
+  );
 
-    return (
-        <AppContext.Provider
-            value={{
-                products,
-                categories,
-                cart,
-                addToCart,
-            }}>
-            {children}
-        </AppContext.Provider>
-    );
+  return (
+    <AppContext.Provider
+      value={{
+        cart,
+        addToCart,
+      }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useAppContext = () => React.useContext(AppContext);
