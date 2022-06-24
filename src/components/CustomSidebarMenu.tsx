@@ -1,11 +1,12 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Image, View, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { theme } from '../Theme';
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from 'react-native-fast-image';
 
 const CustomSidebarMenu: React.FC = props => {
   return (
@@ -16,11 +17,13 @@ const CustomSidebarMenu: React.FC = props => {
         end={{ x: 1.0, y: 1.0 }}
         colors={[theme.color1.color, theme.color2.color, theme.color3.color]}
         style={styles.imgContainer}>
-        <Image
+        <FastImage
+          style={styles.sideMenuProfileIcon}
           source={{
             uri: 'https://icons.veryicon.com/png/o/business/multi-color-financial-and-business-icons/user-139.png',
+            priority: FastImage.priority.normal,
           }}
-          style={styles.sideMenuProfileIcon}
+          resizeMode={FastImage.resizeMode.contain}
         />
         <View style={styles.userDetails}>
           <Text style={styles.username}>Username</Text>

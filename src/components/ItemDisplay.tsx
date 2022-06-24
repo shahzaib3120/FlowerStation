@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 // import { Image } from 'react-native-svg';
 import { Product } from '../DummyData';
 import { theme } from '../Theme';
@@ -19,7 +20,14 @@ export const ItemDisplay: React.FC<Props> = ({ item }) => {
         </View>
       </View>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: item.imgurl }} style={styles.image} />
+        <FastImage
+          style={styles.image}
+          source={{
+            uri: item.imgurl,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+        />
       </View>
     </View>
   );

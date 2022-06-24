@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { stylesList } from '../DummyData';
 import { theme } from '../Theme';
 export const StyleList: React.FC = () => {
@@ -10,7 +11,14 @@ export const StyleList: React.FC = () => {
       data={stylesList}
       renderItem={({ item }) => (
         <View style={styles.box}>
-          <Image source={{ uri: item.imgurl }} style={styles.image} />
+          <FastImage
+            style={styles.image}
+            source={{
+              uri: item.imgurl,
+              priority: FastImage.priority.normal,
+            }}
+            resizeMode={FastImage.resizeMode.contain}
+          />
           <Text style={[theme.gray]}>{item.style}</Text>
         </View>
       )}

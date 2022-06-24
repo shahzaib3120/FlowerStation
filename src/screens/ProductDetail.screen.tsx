@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Pressable,
-  TextInput,
-} from 'react-native';
+import { View, Text, StyleSheet, Pressable, TextInput } from 'react-native';
 import { theme } from '../Theme';
 import { Svg, Polygon } from 'react-native-svg';
 import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import { useAppContext } from '../App.provider';
+import FastImage from 'react-native-fast-image';
 
 type Props = {
   navigation: any;
@@ -58,11 +52,13 @@ export const ProductDetail: React.FC<Props> = ({ navigation, route }) => {
               onPress={() => {
                 navigation.goBack();
               }}>
-              <Image
+              <FastImage
+                style={styles.menuIcon}
                 source={{
                   uri: 'https://cdn.iconscout.com/icon/free/png-256/back-arrow-1767515-1502579.png',
+                  priority: FastImage.priority.normal,
                 }}
-                style={styles.menuIcon}
+                resizeMode={FastImage.resizeMode.contain}
               />
             </Pressable>
             <TextInput
@@ -78,11 +74,13 @@ export const ProductDetail: React.FC<Props> = ({ navigation, route }) => {
             onPress={() => {
               navigation.navigate('Cart');
             }}>
-            <Image
+            <FastImage
+              style={styles.cartIcon}
               source={{
                 uri: 'https://www.iconsdb.com/icons/preview/white/shopping-basket-xxl.png',
+                priority: FastImage.priority.normal,
               }}
-              style={styles.cartIcon}
+              resizeMode={FastImage.resizeMode.contain}
             />
             {appContext.cart.length ? (
               <Text style={styles.cartTag}>{appContext.cart.length}</Text>
@@ -91,7 +89,14 @@ export const ProductDetail: React.FC<Props> = ({ navigation, route }) => {
         </View>
       </LinearGradient>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: item.imgurl }} style={styles.image} />
+        <FastImage
+          style={styles.image}
+          source={{
+            uri: item.imgurl,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+        />
       </View>
       <View style={styles.descriptionContainer}>
         <Text style={styles.description}>{item.description}</Text>

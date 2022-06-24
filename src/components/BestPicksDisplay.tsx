@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { Product } from '../DummyData';
 import { theme } from '../Theme';
 type Props = {
@@ -12,7 +13,14 @@ export const BestPicksDisplay: React.FC<Props> = ({ data }) => {
       {discount ? (
         <Text style={styles.discountTag}>{data.discount}%</Text>
       ) : null}
-      <Image source={{ uri: data.imgurl }} style={styles.image} />
+      <FastImage
+        style={styles.image}
+        source={{
+          uri: data.imgurl,
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
+      />
       <Text style={styles.descriptionText}>{data.description}</Text>
       <Text style={styles.priceText}>{data.price} $</Text>
     </View>

@@ -7,22 +7,20 @@ export const stylesList: Style[] = [
   {
     style: 'Men',
     imgurl:
-      'https://www.freeiconspng.com/thumbs/running-icon/running-shoe-icon-31.png',
+      'https://images.vexels.com/media/users/3/234044/isolated/lists/9be4690cfd9b8031c9aff0f37136954d-low-top-sneaker-side-view.png',
   },
   {
     style: 'Women',
     imgurl:
-      'https://www.freeiconspng.com/thumbs/running-icon/running-shoe-icon-31.png',
+      'https://images.vexels.com/media/users/3/237081/isolated/lists/ea611813b3f2e05ec2127b89b1b0add4-flat-pair-of-high-heels.png',
   },
   {
     style: 'Kids',
-    imgurl:
-      'https://www.freeiconspng.com/thumbs/running-icon/running-shoe-icon-31.png',
+    imgurl: 'https://img.icons8.com/emoji/256/backpack-emoji.png',
   },
   {
     style: 'Babies',
-    imgurl:
-      'https://www.freeiconspng.com/thumbs/running-icon/running-shoe-icon-31.png',
+    imgurl: 'https://cdn-icons-png.flaticon.com/128/375/375208.png',
   },
 ];
 

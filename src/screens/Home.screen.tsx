@@ -7,8 +7,8 @@ import {
   Pressable,
   ScrollView,
   FlatList,
-  Image,
 } from 'react-native';
+import FastImage from 'react-native-fast-image';
 // import Svg, { Line, Path } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import { theme } from '../Theme';
@@ -39,11 +39,13 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
                 onPress={() => {
                   navigation.openDrawer();
                 }}>
-                <Image
-                  source={{
-                    uri: 'https://icon-library.com/images/free-hamburger-menu-icon/free-hamburger-menu-icon-12.jpg',
-                  }}
+                <FastImage
                   style={styles.menuIcon}
+                  source={{
+                    uri: 'https://cdn-icons-png.flaticon.com/128/5234/5234126.png',
+                    priority: FastImage.priority.normal,
+                  }}
+                  resizeMode={FastImage.resizeMode.contain}
                 />
               </Pressable>
               <TextInput
@@ -59,11 +61,13 @@ export const Home: React.FC<HomeProps> = ({ navigation }) => {
               onPress={() => {
                 navigation.navigate('Cart');
               }}>
-              <Image
+              <FastImage
+                style={styles.cartIcon}
                 source={{
                   uri: 'https://www.iconsdb.com/icons/preview/white/shopping-basket-xxl.png',
+                  priority: FastImage.priority.normal,
                 }}
-                style={styles.cartIcon}
+                resizeMode={FastImage.resizeMode.contain}
               />
               {appContext.cart.length ? (
                 <Text style={styles.cartTag}>{appContext.cart.length}</Text>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { Category } from '../DummyData';
 import { theme } from '../Theme';
 
@@ -12,7 +13,14 @@ export const CategoriesDisplay: React.FC<CategoriesDisplayProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: data.imgurl }} style={styles.image} />
+      <FastImage
+        style={styles.image}
+        source={{
+          uri: data.imgurl,
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
+      />
       <View style={styles.text}>
         <Text style={[theme.gray]}>{data.name}</Text>
       </View>

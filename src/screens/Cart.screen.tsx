@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Image } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { useAppContext } from '../App.provider';
 import { ItemDisplay } from '../components/ItemDisplay';
 import { GradientButton } from '../components/Button';
+import FastImage from 'react-native-fast-image';
 type Props = {
   navigation: any;
 };
@@ -19,9 +20,13 @@ export const Cart: React.FC<Props> = ({}) => {
           keyExtractor={item => item.id}
         />
       ) : (
-        <Image
-          source={{ uri: 'https://www.no-fea.com/front/images/empty-cart.png' }}
+        <FastImage
           style={styles.emptyCart}
+          source={{
+            uri: 'https://www.no-fea.com/front/images/empty-cart.png',
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
         />
       )}
       <GradientButton text={btnText} />
