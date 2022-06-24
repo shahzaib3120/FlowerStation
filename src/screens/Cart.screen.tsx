@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, FlatList, Image } from 'react-native';
-import { theme } from '../Theme';
+import { View, StyleSheet, FlatList, Image } from 'react-native';
 import { useAppContext } from '../App.provider';
 import { ItemDisplay } from '../components/ItemDisplay';
 import { GradientButton } from '../components/Button';

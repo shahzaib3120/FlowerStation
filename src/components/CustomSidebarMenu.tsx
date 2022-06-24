@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/drawer';
 import LinearGradient from 'react-native-linear-gradient';
 
-const CustomSidebarMenu = props => {
+const CustomSidebarMenu: React.FC = props => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/*Top Large Image */}

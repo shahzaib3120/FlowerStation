@@ -15,7 +15,6 @@ const defaultvalue = {
 const AppContext = createContext<AppContextType>(defaultvalue);
 type Props = {
   children: React.ReactNode;
-  navigation: any;
 };
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>([]);

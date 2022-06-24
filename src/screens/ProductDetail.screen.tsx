@@ -25,13 +25,15 @@ export const ProductDetail: React.FC<Props> = ({ navigation, route }) => {
   const StarSvg: React.FC = () => {
     let stars = [];
     for (let i = 0; i < item.reviews; i++) {
-      stars.push(1);
+      stars.push({
+        id: i,
+      });
     }
     return (
       <View style={{ flexDirection: 'row' }}>
         {stars.map(a => {
           return (
-            <Svg height="25" width="25">
+            <Svg height="25" width="25" key={a.id}>
               <Polygon
                 points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78"
                 // stroke={theme.gray.color}
